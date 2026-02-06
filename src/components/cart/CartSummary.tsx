@@ -10,25 +10,21 @@ export const CartSummary: React.FC = () => {
       <h2 className="text-lg font-bold text-gray-900 mb-6">Order Summary</h2>
 
       <div className="space-y-4">
-        {/* Items Count */}
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Items ({itemsCount})</span>
           <span className="text-gray-900">{formatPrice(subtotal)}</span>
         </div>
 
-        {/* Shipping */}
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Shipping</span>
           <span className="text-green-600 font-medium">Free</span>
         </div>
 
-        {/* Tax */}
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Estimated Tax (10%)</span>
           <span className="text-gray-900">{formatPrice(tax)}</span>
         </div>
 
-        {/* Divider */}
         <div className="border-t border-gray-200 pt-4">
           <div className="flex justify-between items-baseline">
             <span className="text-lg font-semibold text-gray-900">Total</span>
@@ -39,7 +35,7 @@ export const CartSummary: React.FC = () => {
         </div>
       </div>
 
-      {/* Checkout Button */}
+
       <button
         className="w-full mt-6 btn-primary flex items-center justify-center gap-2"
         onClick={() =>
@@ -62,7 +58,7 @@ export const CartSummary: React.FC = () => {
         Proceed to Checkout
       </button>
 
-      {/* Security Badge */}
+
       <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
         <svg
           className="w-4 h-4"

@@ -15,7 +15,6 @@ export const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:shadow-xl group-hover:shadow-primary-500/30 transition-shadow">
               <svg
@@ -37,25 +36,22 @@ export const Header: React.FC = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <Link
               to="/products"
-              className={`text-sm font-medium transition-colors ${
-                isActive("/products")
+              className={`text-sm font-medium transition-colors ${isActive("/products")
                   ? "text-primary-600"
                   : "text-gray-600 hover:text-gray-900"
-              }`}
+                }`}
             >
               Products
             </Link>
             <Link
               to="/cart"
-              className={`relative flex items-center gap-2 text-sm font-medium transition-colors ${
-                isActive("/cart")
+              className={`relative flex items-center gap-2 text-sm font-medium transition-colors ${isActive("/cart")
                   ? "text-primary-600"
                   : "text-gray-600 hover:text-gray-900"
-              }`}
+                }`}
             >
               <svg
                 className="w-5 h-5"
@@ -79,7 +75,6 @@ export const Header: React.FC = () => {
             </Link>
           </nav>
 
-          {/* Mobile Menu Button & Cart */}
           <div className="flex items-center gap-4 md:hidden">
             <Link to="/cart" className="relative p-2">
               <svg
@@ -132,25 +127,22 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100">
             <nav className="flex flex-col gap-4">
               <Link
                 to="/products"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-sm font-medium ${
-                  isActive("/products") ? "text-primary-600" : "text-gray-600"
-                }`}
+                className={`text-sm font-medium ${isActive("/products") ? "text-primary-600" : "text-gray-600"
+                  }`}
               >
                 Products
               </Link>
               <Link
                 to="/cart"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-sm font-medium flex items-center gap-2 ${
-                  isActive("/cart") ? "text-primary-600" : "text-gray-600"
-                }`}
+                className={`text-sm font-medium flex items-center gap-2 ${isActive("/cart") ? "text-primary-600" : "text-gray-600"
+                  }`}
               >
                 Cart
                 {itemsCount > 0 && (

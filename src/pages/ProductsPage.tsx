@@ -14,23 +14,23 @@ export const ProductsPage: React.FC = () => {
     error,
   } = useAppSelector((state) => state.products);
 
-  // Search and filter state
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
 
-  // Get unique categories
+
   const categories = useMemo(() => {
     const uniqueCategories = [...new Set(products.map((p) => p.category))];
     return uniqueCategories.sort();
   }, [products]);
 
-  // Filter and sort products
+
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
-    // Search filter
+
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       result = result.filter(
@@ -41,12 +41,12 @@ export const ProductsPage: React.FC = () => {
       );
     }
 
-    // Category filter
+
     if (selectedCategory) {
       result = result.filter((p) => p.category === selectedCategory);
     }
 
-    // Price range filter
+
     if (priceRange.min) {
       result = result.filter((p) => p.price >= Number(priceRange.min));
     }
@@ -54,7 +54,7 @@ export const ProductsPage: React.FC = () => {
       result = result.filter((p) => p.price <= Number(priceRange.max));
     }
 
-    // Sort
+
     switch (sortBy) {
       case "price-asc":
         result.sort((a, b) => a.price - b.price);
@@ -110,7 +110,7 @@ export const ProductsPage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Page Header */}
+
       <div className="text-center mb-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
           Discover Products
@@ -120,10 +120,10 @@ export const ProductsPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Search and Filters */}
+
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Search */}
+
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="relative">
               <svg
@@ -149,7 +149,7 @@ export const ProductsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Category */}
+
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -163,7 +163,7 @@ export const ProductsPage: React.FC = () => {
             ))}
           </select>
 
-          {/* Sort */}
+
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
@@ -177,7 +177,7 @@ export const ProductsPage: React.FC = () => {
             <option value="rating">Top Rated</option>
           </select>
 
-          {/* Price Range */}
+
           <div className="flex gap-2">
             <input
               type="number"
@@ -202,27 +202,27 @@ export const ProductsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Active Filters & Clear */}
+
         {(searchQuery ||
           selectedCategory ||
           sortBy ||
           priceRange.min ||
           priceRange.max) && (
-          <div className="mt-4 flex items-center justify-between">
-            <p className="text-sm text-gray-600">
-              Showing {filteredProducts.length} of {products.length} products
-            </p>
-            <button
-              onClick={clearFilters}
-              className="text-sm text-primary-600 hover:text-primary-700 font-medium"
-            >
-              Clear all filters
-            </button>
-          </div>
-        )}
+            <div className="mt-4 flex items-center justify-between">
+              <p className="text-sm text-gray-600">
+                Showing {filteredProducts.length} of {products.length} products
+              </p>
+              <button
+                onClick={clearFilters}
+                className="text-sm text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Clear all filters
+              </button>
+            </div>
+          )}
       </div>
 
-      {/* Products Grid */}
+
       {filteredProducts.length === 0 ? (
         <div className="text-center py-16">
           <svg

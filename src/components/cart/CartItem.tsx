@@ -22,7 +22,6 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-      {/* Product Image */}
       <Link
         to={`/products/${item.id}`}
         className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-gray-100 hover:opacity-80 transition-opacity"
@@ -34,7 +33,6 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
         />
       </Link>
 
-      {/* Product Info */}
       <div className="flex-1 min-w-0">
         <Link
           to={`/products/${item.id}`}
@@ -47,7 +45,6 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
         </p>
       </div>
 
-      {/* Quantity Controls */}
       <div className="flex items-center gap-4 sm:gap-6">
         <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
           <button
@@ -95,12 +92,10 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
           </button>
         </div>
 
-        {/* Subtotal */}
         <span className="w-24 text-right font-semibold text-gray-900">
           {formatPrice(item.subtotal)}
         </span>
 
-        {/* Remove Button */}
         <button
           onClick={handleRemove}
           className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"

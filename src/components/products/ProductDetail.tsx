@@ -48,9 +48,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-      {/* Image Gallery */}
       <div className="space-y-4">
-        {/* Main Image */}
         <div className="aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-xl">
           <img
             src={images[selectedImage]}
@@ -59,18 +57,16 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           />
         </div>
 
-        {/* Thumbnail Gallery */}
         {images.length > 1 && (
           <div className="flex gap-2 overflow-x-auto pb-2">
             {images.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedImage(index)}
-                className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
-                  selectedImage === index
+                className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${selectedImage === index
                     ? "border-primary-500 shadow-lg"
                     : "border-transparent hover:border-gray-300"
-                }`}
+                  }`}
               >
                 <img
                   src={image}
@@ -83,9 +79,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
         )}
       </div>
 
-      {/* Product Info */}
       <div className="flex flex-col">
-        {/* Category & Brand */}
         <div className="flex items-center gap-2 mb-2">
           <span className="badge-primary">{product.category}</span>
           {product.brand && (
@@ -95,22 +89,19 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           )}
         </div>
 
-        {/* Title */}
         <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
           {product.title}
         </h1>
 
-        {/* Rating */}
         <div className="flex items-center gap-2 mb-4">
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
               <svg
                 key={i}
-                className={`w-5 h-5 ${
-                  i < Math.floor(product.rating)
+                className={`w-5 h-5 ${i < Math.floor(product.rating)
                     ? "text-yellow-400 fill-current"
                     : "text-gray-300 fill-current"
-                }`}
+                  }`}
                 viewBox="0 0 20 20"
               >
                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
@@ -122,7 +113,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           </span>
         </div>
 
-        {/* Price */}
         <div className="flex items-baseline gap-3 mb-6">
           <span className="text-4xl font-bold text-gray-900">
             {formatPrice(product.price)}
@@ -141,21 +131,18 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           )}
         </div>
 
-        {/* Description */}
         <p className="text-gray-600 leading-relaxed mb-6">
           {product.description}
         </p>
 
-        {/* Stock Status */}
         <div className="flex items-center gap-2 mb-6">
           <span
-            className={`w-2 h-2 rounded-full ${
-              product.stock > 10
+            className={`w-2 h-2 rounded-full ${product.stock > 10
                 ? "bg-green-500"
                 : product.stock > 0
                   ? "bg-yellow-500"
                   : "bg-red-500"
-            }`}
+              }`}
           />
           <span className="text-sm text-gray-600">
             {product.stock > 10
@@ -166,7 +153,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           </span>
         </div>
 
-        {/* In Cart Indicator */}
         {inCart && (
           <div className="p-4 bg-green-50 border border-green-200 rounded-xl mb-6">
             <p className="text-green-700 font-medium flex items-center gap-2">
@@ -188,7 +174,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           </div>
         )}
 
-        {/* Quantity Selector */}
         <div className="flex items-center gap-4 mb-6">
           <span className="text-sm font-medium text-gray-700">Quantity:</span>
           <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden">
@@ -241,17 +226,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           </span>
         </div>
 
-        {/* Add to Cart Button */}
         <button
           onClick={handleAddToCart}
           disabled={isAdding || product.stock === 0}
-          className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-3 ${
-            isAdding
+          className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-3 ${isAdding
               ? "bg-green-500 text-white"
               : product.stock === 0
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                 : "btn-primary"
-          }`}
+            }`}
         >
           {isAdding ? (
             <>

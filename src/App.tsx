@@ -4,10 +4,10 @@ import { Toaster } from "react-hot-toast";
 import { useAppDispatch } from "./store/store";
 import { fetchProducts } from "./store/slices/productsSlice";
 
-// Layout
+
 import Layout from "./components/layout/Layout";
 
-// Pages
+
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -16,14 +16,14 @@ import CartPage from "./pages/CartPage";
 function App() {
   const dispatch = useAppDispatch();
 
-  // Fetch all products once on app initialization
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
   return (
     <>
-      {/* Toast Notifications */}
+
       <Toaster
         position="top-right"
         toastOptions={{
@@ -50,14 +50,14 @@ function App() {
         }}
       />
 
-      {/* Routes */}
+
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="products/:id" element={<ProductDetailPage />} />
           <Route path="cart" element={<CartPage />} />
-          {/* 404 Fallback */}
+
           <Route
             path="*"
             element={

@@ -15,7 +15,6 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
     <div
       className={`flex flex-col items-center justify-center p-8 ${className}`}
     >
-      {/* Error Icon */}
       <div className="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-red-100">
         <svg
           className="w-8 h-8 text-red-500"
@@ -33,13 +32,11 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
         </svg>
       </div>
 
-      {/* Error Message */}
       <h3 className="text-lg font-semibold text-gray-900 mb-2">
         Oops! Something went wrong
       </h3>
       <p className="text-gray-600 text-center max-w-md mb-6">{message}</p>
 
-      {/* Retry Button */}
       {onRetry && (
         <button
           onClick={onRetry}

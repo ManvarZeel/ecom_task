@@ -4,21 +4,21 @@ import type { Product, ProductsState, ProductsApiResponse } from "../../types";
 
 const API_URL = "https://dummyjson.com/products";
 
-// Initial state
+
 const initialState: ProductsState = {
   items: [],
   loading: false,
   error: null,
 };
 
-// Async thunk to fetch all products
+
 export const fetchProducts = createAsyncThunk<
   Product[],
   void,
   { rejectValue: string }
 >("products/fetchProducts", async (_, { rejectWithValue }) => {
   try {
-    // Fetch all products (limit=0 returns all)
+
     const response = await axios.get<ProductsApiResponse>(`${API_URL}?limit=0`);
     return response.data.products;
   } catch (error) {
@@ -29,7 +29,7 @@ export const fetchProducts = createAsyncThunk<
   }
 });
 
-// Products slice
+
 const productsSlice = createSlice({
   name: "products",
   initialState,

@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { CartState, CartItem, Product } from "../../types";
 
-// Keys for localStorage
+
 const CART_STORAGE_KEY = "ecommerce_cart";
 
-// Helper to load cart from localStorage
+
 const loadCartFromStorage = (): CartItem[] => {
   try {
     const stored = localStorage.getItem(CART_STORAGE_KEY);
@@ -18,7 +18,7 @@ const loadCartFromStorage = (): CartItem[] => {
   return [];
 };
 
-// Helper to save cart to localStorage
+
 const saveCartToStorage = (items: CartItem[]): void => {
   try {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
@@ -27,7 +27,7 @@ const saveCartToStorage = (items: CartItem[]): void => {
   }
 };
 
-// Initial state - load from localStorage
+
 const initialState: CartState = {
   items: loadCartFromStorage(),
 };
@@ -37,7 +37,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // Add item to cart or increment quantity if already exists
+
     addToCart: (
       state,
       action: PayloadAction<{ product: Product; quantity?: number }>,
@@ -61,7 +61,7 @@ const cartSlice = createSlice({
       saveCartToStorage(state.items);
     },
 
-    // Update quantity of a specific item
+
     updateQuantity: (
       state,
       action: PayloadAction<{ id: number; quantity: number }>,
@@ -76,7 +76,7 @@ const cartSlice = createSlice({
       }
     },
 
-    // Increment quantity by 1
+
     incrementQuantity: (state, action: PayloadAction<number>) => {
       const item = state.items.find((item) => item.id === action.payload);
       if (item) {
@@ -86,7 +86,7 @@ const cartSlice = createSlice({
       }
     },
 
-    // Decrement quantity by 1 (minimum 1)
+
     decrementQuantity: (state, action: PayloadAction<number>) => {
       const item = state.items.find((item) => item.id === action.payload);
       if (item && item.quantity > 1) {
@@ -96,19 +96,17 @@ const cartSlice = createSlice({
       }
     },
 
-    // Remove item from cart
+
     removeFromCart: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
       saveCartToStorage(state.items);
     },
 
-    // Clear entire cart
     clearCart: (state) => {
       state.items = [];
       saveCartToStorage(state.items);
     },
 
-    // Load cart from localStorage (useful for rehydration)
     loadCart: (state) => {
       state.items = loadCartFromStorage();
     },

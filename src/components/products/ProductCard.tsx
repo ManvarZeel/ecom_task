@@ -42,7 +42,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       to={`/products/${product.id}`}
       className="card group cursor-pointer flex flex-col"
     >
-      {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-gray-100">
         <img
           src={product.thumbnail}
@@ -50,13 +49,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
         />
-        {/* Discount Badge */}
         {product.discountPercentage > 10 && (
           <span className="absolute top-3 left-3 px-2 py-1 text-xs font-bold text-white bg-red-500 rounded-lg shadow-lg">
             -{Math.round(product.discountPercentage)}%
           </span>
         )}
-        {/* Rating Badge */}
         <span className="absolute top-3 right-3 px-2 py-1 text-xs font-medium text-gray-800 bg-white/90 backdrop-blur-sm rounded-lg shadow-sm flex items-center gap-1">
           <svg
             className="w-3 h-3 text-yellow-400 fill-current"
@@ -66,7 +63,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </svg>
           {product.rating.toFixed(1)}
         </span>
-        {/* In Cart Indicator */}
         {inCart && (
           <span className="absolute bottom-3 right-3 px-2 py-1 text-xs font-medium text-white bg-green-500 rounded-lg shadow-lg">
             In Cart ({cartItem?.quantity})
@@ -74,19 +70,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
 
-      {/* Content */}
       <div className="flex flex-col flex-1 p-4">
-        {/* Category */}
         <span className="text-xs font-medium text-primary-600 uppercase tracking-wide mb-1">
           {product.category}
         </span>
 
-        {/* Title */}
         <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors line-clamp-2">
           {truncateText(product.title, 50)}
         </h3>
 
-        {/* Price */}
         <div className="flex items-center gap-2 mb-4 mt-auto">
           <span className="text-lg font-bold text-gray-900">
             {formatPrice(product.price)}
@@ -100,17 +92,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           )}
         </div>
 
-        {/* Add to Cart Button */}
         <button
           onClick={handleAddToCart}
           disabled={isAdding}
-          className={`w-full py-2.5 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2 ${
-            isAdding
+          className={`w-full py-2.5 px-4 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2 ${isAdding
               ? "bg-green-500 text-white"
               : inCart
                 ? "bg-primary-100 text-primary-700 hover:bg-primary-200"
                 : "bg-gray-900 text-white hover:bg-gray-800 hover:shadow-lg"
-          }`}
+            }`}
         >
           {isAdding ? (
             <>

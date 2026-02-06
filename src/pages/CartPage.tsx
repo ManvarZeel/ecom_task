@@ -18,12 +18,12 @@ export const CartPage: React.FC = () => {
     });
   };
 
-  // Empty cart state
+
   if (cartItems.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center">
-          {/* Empty Cart Illustration */}
+
           <div className="w-32 h-32 mx-auto mb-8 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
             <svg
               className="w-16 h-16 text-gray-400"
@@ -72,7 +72,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Page Header */}
+
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Shopping Cart</h1>
@@ -101,15 +101,15 @@ export const CartPage: React.FC = () => {
         </button>
       </div>
 
-      {/* Cart Content */}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Cart Items */}
+
         <div className="lg:col-span-2 space-y-4">
           {cartItems.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
 
-          {/* Continue Shopping Link */}
+
           <div className="pt-4">
             <Link
               to="/products"
@@ -133,13 +133,13 @@ export const CartPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Cart Summary */}
+
         <div className="lg:col-span-1">
           <CartSummary />
         </div>
       </div>
 
-      {/* Clear Cart Confirmation Modal */}
+
       {showClearConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 animate-in fade-in zoom-in duration-200">

@@ -11,7 +11,7 @@ export const ProductDetailPage: React.FC = () => {
     (state) => state.products,
   );
 
-  // Find product by ID
+
   const product = products.find((p) => p.id === Number(id));
 
   if (loading) {
@@ -22,7 +22,7 @@ export const ProductDetailPage: React.FC = () => {
     );
   }
 
-  // 404 state for invalid product ID
+
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -64,7 +64,7 @@ export const ProductDetailPage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Breadcrumb */}
+
       <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
         <Link to="/products" className="hover:text-gray-900 transition-colors">
           Products
@@ -85,10 +85,10 @@ export const ProductDetailPage: React.FC = () => {
         <span className="text-gray-900 truncate max-w-xs">{product.title}</span>
       </nav>
 
-      {/* Product Detail */}
+
       <ProductDetail product={product} />
 
-      {/* Back Button */}
+
       <div className="mt-12 pt-8 border-t border-gray-200">
         <Link
           to="/products"

@@ -18,13 +18,13 @@ export const useCart = () => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
 
-  // Calculate totals
+
   const itemsCount = calculateCartItemsCount(cartItems);
   const subtotal = calculateCartSubtotal(cartItems);
-  const tax = subtotal * 0.1; // 10% tax
+  const tax = subtotal * 0.1;
   const total = subtotal + tax;
 
-  // Add product to cart
+
   const handleAddToCart = useCallback(
     (product: Product, quantity: number = 1) => {
       dispatch(addToCart({ product, quantity }));
@@ -32,7 +32,7 @@ export const useCart = () => {
     [dispatch],
   );
 
-  // Update item quantity
+
   const handleUpdateQuantity = useCallback(
     (id: number, quantity: number) => {
       dispatch(updateQuantity({ id, quantity }));
@@ -40,7 +40,7 @@ export const useCart = () => {
     [dispatch],
   );
 
-  // Increment item quantity
+
   const handleIncrement = useCallback(
     (id: number) => {
       dispatch(incrementQuantity(id));
@@ -48,7 +48,7 @@ export const useCart = () => {
     [dispatch],
   );
 
-  // Decrement item quantity
+
   const handleDecrement = useCallback(
     (id: number) => {
       dispatch(decrementQuantity(id));
@@ -56,7 +56,7 @@ export const useCart = () => {
     [dispatch],
   );
 
-  // Remove item from cart
+
   const handleRemove = useCallback(
     (id: number) => {
       dispatch(removeFromCart(id));
@@ -64,12 +64,12 @@ export const useCart = () => {
     [dispatch],
   );
 
-  // Clear entire cart
+
   const handleClear = useCallback(() => {
     dispatch(clearCart());
   }, [dispatch]);
 
-  // Check if product is in cart
+
   const isInCart = useCallback(
     (productId: number): boolean => {
       return cartItems.some((item) => item.id === productId);
@@ -77,7 +77,7 @@ export const useCart = () => {
     [cartItems],
   );
 
-  // Get cart item by product ID
+
   const getCartItem = useCallback(
     (productId: number): CartItem | undefined => {
       return cartItems.find((item) => item.id === productId);
