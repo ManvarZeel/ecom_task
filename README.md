@@ -5,7 +5,8 @@ A modern, responsive e-commerce application built with React, Redux Toolkit, and
 ## 🔗 Links
 
 - **Live Demo (Local):** [http://localhost:5173](http://localhost:5173)
-- **GitHub Repository:** [https://github.com/pratikKakani28/new_ecom_task_zeel](https://github.com/pratikKakani28/new_ecom_task_zeel)
+- **Live Demo (Netlify):** [https://ecom-task-285b1b.netlify.app/](https://ecom-task-285b1b.netlify.app/)
+- **GitHub Repository:** [https://github.com/ManvarZeel/ecom_task.git](https://github.com/ManvarZeel/ecom_task.git)
 
 ## 🏗 Architecture Decisions
 
